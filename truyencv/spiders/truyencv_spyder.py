@@ -28,6 +28,7 @@ class TruyemCVSpider(scrapy.Spider):
 
         chap = {
             # 'author': response.css('a.author.js-popover>div.avatar').get(),
+            'category': response.xpath("//li//a//span[@property='name']//text()").getall()[1],
             'title': response.css('div>h1.title>a::text').get(),
             'author': max(response.xpath("//a[@class='author js-popover']//text()").getall()),
             'chapter' : response.css('h2.title::text').get(),
